@@ -51,8 +51,16 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Automerge
+
+      - name: Automerge fallido
         uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+        if: ${{ failure() }}
+        env:
+          MENSAJE_ERROR: Falló el merge automático
+
+      - name: Automerge completo
+        uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+        if: ${{ success() }}
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: ""
