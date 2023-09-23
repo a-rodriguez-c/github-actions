@@ -138,7 +138,6 @@ class CrearEjercicio(unittest.TestCase):
         descripcion = "con el peso en la parte posterior subir y bajar"
         enlaces = "http://www.ejemplo1.com"
         calorias = 500
-
         resultado = self.logica.crear_ejercicio(nombres, descripcion, enlaces, calorias)
         self.assertEqual(resultado, True)
 
