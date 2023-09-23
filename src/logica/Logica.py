@@ -102,8 +102,7 @@ class Logica(FachadaEnForma):
                 EjercicioEntrenamiento.fecha,
                 EjercicioEntrenamiento.cantidad_repeticiones,
                 EjercicioEntrenamiento.tiempo_ejercicio
-            ).\
-                outerjoin(Ejercicio, EjercicioEntrenamiento.ejercicio_id == Ejercicio.id).\
+            ).outerjoin(Ejercicio, EjercicioEntrenamiento.ejercicio_id == Ejercicio.id).\
                 where(EjercicioEntrenamiento.persona_id == id_persona)
 
             resultado = ejercicios_persona.all()
