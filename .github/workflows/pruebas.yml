@@ -1,8 +1,16 @@
 name: Pruebas unitarias
 on:
   pull_request:
-    branches: [develop]
-
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+    branches: [ develop ]
 jobs:
   job1:
     name: Pruebas
@@ -27,7 +35,9 @@ jobs:
         if: ${{ failure() }}
         env:
           MENSAJE_ERROR: Una o varias pruebas fallaron
-        run: echo "::set-output name=resultado::$MENSAJE_ERROR"
+        run: |
+          echo "::set-output name=resultado::$MENSAJE_ERROR"
+          exit 1
       - name: Validar resultado sin errores
         if: ${{ success() }}
         env:
