@@ -174,5 +174,4 @@ class Logica(FachadaEnForma):
         )
 
         self.session.add(nuevo_entrenamiento)
-
         self.session.commit()
