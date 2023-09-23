@@ -35,7 +35,10 @@ jobs:
         if: ${{ failure() }}
         env:
           MENSAJE_ERROR: Una o varias pruebas fallaron
-        run: echo "::set-output name=resultado::$MENSAJE_ERROR"
+        run: |
+          echo "::set-output name=resultado::$MENSAJE_ERROR"
+          pull-request-blocker
+          exit 1
       - name: Validar resultado sin errores
         if: ${{ success() }}
         env:
