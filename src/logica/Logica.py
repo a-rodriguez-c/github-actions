@@ -161,7 +161,7 @@ class Logica(FachadaEnForma):
         if not tiempo:
             return 'Debe ingresar un tiempo de entrenamiento'
         if not self.__validar_numero(tiempo):
-            return 'El tiempo de entrenamiento debe ser un número'
+            return 'El tiempo de entrenamiento debe ser un números'
         return ''
 
     def crear_entrenamiento(self, persona, ejercicio, fecha, repeticiones, tiempo):
