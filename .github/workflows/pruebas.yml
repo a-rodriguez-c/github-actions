@@ -1,7 +1,16 @@
 name: Pruebas unitarias
 on:
   pull_request:
-    branches: [develop]
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+    branches: [ develop ]
 
 jobs:
   job1:
