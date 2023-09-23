@@ -33,3 +33,9 @@ jobs:
         env:
           MENSAJE_EXITO: Todas las pruebas pasaron
         run: echo "::set-output name=resultado::$MENSAJE_EXITO"
+      - name: Cálculo cubrimiento
+        id: cubrimiento
+        run: |
+          pip install coverage
+          coverage run -m unittest -v tests/test_logica.py
+          coverage report -m
