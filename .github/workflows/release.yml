@@ -55,11 +55,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Crear Rama
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git checkout -b release
           git push -f -u origin release
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Mezclar Ramas
         uses: tukasz/direct-merge-action@master
