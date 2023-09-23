@@ -7,6 +7,8 @@ jobs:
   job1:
     name: Pruebas
     runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.resultado }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,3 +23,13 @@ jobs:
       - name: Correr pruebas
         id: correr-pruebas
         run: python -m unittest -v tests/test_logica.py
+      - name: Validar resultado con errores
+        if: ${{ failure() }}
+        env:
+          MENSAJE_ERROR: Una o varias pruebas fallaron
+        run: echo "::set-output name=resultado::$MENSAJE_ERROR"
+      - name: Validar resultado sin errores
+        if: ${{ success() }}
+        env:
+          MENSAJE_EXITO: Todas las pruebas pasaron
+        run: echo "::set-output name=resultado::$MENSAJE_EXITO"
