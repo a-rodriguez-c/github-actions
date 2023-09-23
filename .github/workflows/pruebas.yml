@@ -1,6 +1,6 @@
 name: Pruebas unitarias
 on:
-  push:
+  pull_request:
     branches: [develop]
 
 jobs:
